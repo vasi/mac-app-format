@@ -1,0 +1,37 @@
+appFormat.pl: Show the executable formats of Mac applications
+=============================================================
+
+Macs have gone through a long series of different executable formats. This script helps to identify them.
+
+-----------
+
+Usage: appFormat.pl [--old] PATH
+
+This will search PATH for Mac applications. For each one it finds, it will print its path, and its format.
+
+If the --old flag is used, it will only display applications that will not run on current Mac operating systems.
+
+NOTE: This script only runs on Mac OS X.
+
+-----------
+
+Recognized formats and architectutes, from oldest to newest:
+
+* CODE resource, on 68k
+* Code Fragment Manager, on 68k and PPC
+* Preferred Executable Format on PPC
+* Mach-O, on PPC, x86, AMD64, ARM and others
+
+Of these, only Mach-O on x86 and AMD64 are considered 'new'.
+
+Many weird and wonderful combinations exist:
+
+* PEF executables invariably are CFM as well
+* 'Fat binaries' contain both CODE and PEF, for m68k and PPC
+* 'Universal binaries' are Mach-O, with multiple architectures
+* Mach-O executables can be big- or little-endian
+
+-----------
+
+(C) 2009-2011 Dave Vasilevsky <dave@vasilevsky.ca>
+Licensing: Simplified BSD License, see LICENSE file
